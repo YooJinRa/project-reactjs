@@ -74,3 +74,6 @@ const StPostsFromWrap = styled.form`
     color: var(--line-color);
   }
 `
+
+
+//
