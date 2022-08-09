@@ -1,0 +1,48 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "ReactJS",
+      "text": "Hello World!",
+      "comments": [
+        {
+          "id": 1,
+          "writer": "hanghae99",
+          "message": "fighting"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Javascript",
+      "text": "hello world!",
+      "comments": [
+        {
+          "id": 1,
+          "writer": "A",
+          "message": "team 1"
+        },
+        {
+          "id": 2,
+          "writer": "B",
+          "message": "team 2"
+        }
+      ]
+    },
+    {
+      "title": "111",
+      "text": "1111",
+      "id": 3
+    },
+    {
+      "title": "1",
+      "text": "1",
+      "id": 4
+    },
+    {
+      "title": "ddd",
+      "text": "ddd",
+      "id": 5
+    }
+  ]
+}
