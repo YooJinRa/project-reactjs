@@ -9,7 +9,7 @@ const PostRivese = () => {
 
   return (
     <StPostRiveseWrap>
-      PostRivese
+      PostRivese 감사합니다.
     </StPostRiveseWrap>
   )
 }
