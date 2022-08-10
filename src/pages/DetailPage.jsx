@@ -14,23 +14,22 @@ import CommentsList from '../components/CommentsList';
 
 const PostsPage = () => {
   const dispatch = useDispatch();
-  const postsList = useSelector((state) => state.commonsReducer );
-  const { postId } = useParams();
-  
+  const postsList = useSelector(state => state.commonsReducer);
+  const postId = useParams();
+
   useEffect(() => {
     dispatch(__getContents());
   }, [dispatch]);
 
-
-
   return (
     <Layout>
       <Header />
+      
       {postsList.map((post) => (
-        parseInt(postId) === post.id &&
+        post.id === Number(postId.postId) &&
         <PostDetail key={post.id} post={post} />
       ))}
-      
+
       <CommentsForm />
       <CommentsList />
     </Layout>

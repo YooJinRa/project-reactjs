@@ -19,6 +19,7 @@
 - connect-history-api-fallback 현상 : (아직 해결 못함!!!!)
   * React, Vue 등 js 기반의 프레임워크, SPA (Single Page Application)를 사용하면 발생하는 문제
   * 새로고침, 외부 링크를 타고 갔다가 다시 돌아오는 뒤로가기 등등 에서 경로를 찾기 못하는 경우
+    - ===> 어렵게 생각했었는 데, datail 컨포넌트에 추가로 데이터를 불러오면서 해결 완료
 
 -----
 
@@ -72,31 +73,24 @@
       "id": 1,
       "title": "ReactJS",
       "text": "Hello World!",
-      "comments" : [
-        {
-          "id": 1,
-          "writer": "hanghae99",
-          "massage": "fighting"
-        }
-      ]
     },
     {
       "id": 2,
       "title": "Javascript",
       "text": "hello world!",
-      "comments" : [
-        {
-          "id": 1,
-          "writer": "A",
-          "massage": "team 1"
-        },
-        {
-          "id": 2,
-          "writer": "B",
-          "massage": "team 2"
-        }
-      ]
     }
+  ],
+  "comments" : [
+    {
+      "id": 1,
+      "writer": "이름",
+      "message": "댓글 내용"
+    },
+    {
+      "id": 2,
+      "writer": "이름2",
+      "message": "댓글 내용2"
+    },
   ]
 }
 ```

@@ -10,7 +10,7 @@ const PostsList = () => {
   const postsList = useSelector((state) => state.commonsReducer );
 
   useEffect(() => {
-    dispatch(__getContents("posts"));
+    dispatch(__getContents());
   }, [dispatch]);
 
   return (

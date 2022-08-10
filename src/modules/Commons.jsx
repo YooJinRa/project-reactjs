@@ -9,8 +9,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const port = '3003';
 
 // ::: [Thunk, Axios] 데이터 받아오기(get)
-export const __getContents = createAsyncThunk("GET_CONTENTS", async (part) => {
-  const response = await axios.get(`http://localhost:${port}/${part}/`);
+export const __getContents = createAsyncThunk("GET_CONTENTS", async () => {
+  const response = await axios.get(`http://localhost:${port}/posts/`);
   return response.data;
 });
 
@@ -34,7 +34,7 @@ export const __deleteContent = createAsyncThunk("DELETE_CONTENT", async ({ id })
 export const __updateContent = createAsyncThunk("UPDATE_Content", 
   async(updateContent) => {
     // eslint-disable-next-line 
-    const response = await axios.put(`http://localhost:${port}/${updateContent.part}/${updateContent.id}`, {
+    const response = await axios.put(`http://localhost:${port}/posts/${updateContent.id}`, {
       // retrun할 데이터 입력
       id: updateContent.id,
       title: updateContent.title,
@@ -69,5 +69,6 @@ export const commonsReducer = createSlice({
     }
   },
 });
+
 
 export default commonsReducer.reducer

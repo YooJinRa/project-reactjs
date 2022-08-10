@@ -20,8 +20,6 @@ const CommentsForm = () => {
     });
   }
 
-  console.log("CommentsForm inputs::", inputs);
-
   return (
     <StCommentsFormWrap>
       <label>Writer</label>

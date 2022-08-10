@@ -9,7 +9,7 @@ import styled from 'styled-components';
 
 
 
-const PostDetail = ({post}) => {
+const PostDetail = ({ post }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const buttonUpdate = useRef();
@@ -19,10 +19,12 @@ const PostDetail = ({post}) => {
     dispatch(__getContents());
   }, [dispatch]);
 
+  // ::: 뒤로가기
   const onClickBack = () => {
     navigate(-1);
   }
 
+  // ::: 게시글 삭제하기
   const onDeletePost = (event) => {
     event.preventDefault();
     dispatch(__deleteContent({
@@ -33,9 +35,9 @@ const PostDetail = ({post}) => {
 
   // ::: 게시글 수정하기 폼 보이기
   const onTogglUpdatePost = (event) => {
-    event.target.isOpen = !event.target.isOpen;
+    event.target.isopen = !event.target.isopen;
 
-    if(event.target.isOpen === true) {
+    if(event.target.isopen === true) {
       updateFormWrap.current.togglerevise = true;
       updateFormWrap.current.classList.remove('hideBox');
       updateFormWrap.current.classList.add('showBox');
@@ -44,13 +46,11 @@ const PostDetail = ({post}) => {
       updateFormWrap.current.togglerevise = false;
       updateFormWrap.current.classList.add('hideBox');
       updateFormWrap.current.classList.remove('showBox');
-
     }
-
   }
 
   return (
-    <StPostDetailWrap key={post.id}>
+    <StPostDetailWrap>
       <p className='buttonBox'>
         <button type='button' onClick={onClickBack}>Go Back</button>
       </p>
@@ -63,7 +63,7 @@ const PostDetail = ({post}) => {
         <button type='button' 
           ref={buttonUpdate} 
           onClick={onTogglUpdatePost} 
-          isOpen={false}
+          isopen={+false}
         >
             Post Update
         </button>
@@ -72,7 +72,7 @@ const PostDetail = ({post}) => {
       <div
         className='hideBox'
         ref={updateFormWrap} 
-        togglerevise={false} 
+        togglerevise={+false} 
       >
         <PostRivese 
           post={post} 
