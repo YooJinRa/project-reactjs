@@ -13,6 +13,12 @@
 - logger (개발 편하게 도와줌) 설치 : `yarn add redux-loger`
 - styled-components (스타일 적용) 설치 : `yarn add styled-components`
 - 유효성 검사(폼 사용자 입력 안내 적용) : `yarn add react-hook-form`
+- connect-history-api-falback 설치 : `yarn add connect-history-api-fallback`
+
+### Troube Shooting
+- connect-history-api-fallback 현상 : (아직 해결 못함!!!!)
+  * React, Vue 등 js 기반의 프레임워크, SPA (Single Page Application)를 사용하면 발생하는 문제
+  * 새로고침, 외부 링크를 타고 갔다가 다시 돌아오는 뒤로가기 등등 에서 경로를 찾기 못하는 경우
 
 -----
 
@@ -101,7 +107,10 @@
 - input 입력값 추출 : `onChangeInputs`
 - 게시글 추가 : `onCreatePost`
 - 게시글 수정 : `onUpdatePost`
+- 게시글 수정하기 토글 : `onTogglUpdatePost`
 - 게시글 삭제 : `onDeletePost`
 - 댓글 추가 : `onCreateComment`
 - 댓글 수정 : `onUpdateComment`
 - 댓글 삭제 : `onDeleteComment`
+- 뒤로가기 : `onClickBack`
+

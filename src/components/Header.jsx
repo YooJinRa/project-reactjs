@@ -1,13 +1,15 @@
 // components/Header.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-// test
 
 const Header = () => {
 
   return (
     <StHeaderWrap>
-      <h1>Project ReactJS</h1>
+      <Link to={`/`}>
+        <h1>Project ReactJS</h1>
+      </Link>
     </StHeaderWrap>
   )
 }

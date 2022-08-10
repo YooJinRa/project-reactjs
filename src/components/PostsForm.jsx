@@ -1,9 +1,9 @@
 // components/Add.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // ::: 리덕스로 보내기 위해 dispatch 연결, 미들웨어 연결
 import { useDispatch } from "react-redux";
-import { addContent } from '../modules/Commons';
+import { __addContent } from '../modules/Commons';
 
 import styled from 'styled-components';
 
@@ -33,7 +33,7 @@ const PostsForm = () => {
         title: inputs.title, 
         text: inputs.text,
       }
-      dispatch(addContent(newContents));
+      dispatch(__addContent(newContents));
       setInputs({
         title: '',
         text: ''
