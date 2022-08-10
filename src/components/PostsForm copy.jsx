@@ -3,19 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const PostsForm = () => {
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  const openModal = () => {
-    setIsModalOpen(true);
-    // 모달을 열겠다.
-  };
-  const closeModal = () => {
-    if (isModalOpen === true) return setIsModalOpen(false);
-    //모달이 열렸을 때만 닫아주겠다. 
-  };
-
-
   // html 만들고-title,text 값 가져와서 db저장하기 위해
   // 액션-액션생성함수-리듀서-미들웨어 통해서 db에 넣고
   // 다시 db에서 가져온 정보를 미들웨어 통해서 리듀서로 갔다가

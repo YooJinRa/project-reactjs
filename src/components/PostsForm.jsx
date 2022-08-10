@@ -5,10 +5,13 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import { addContent } from '../modules/Commons';
 
+import AllButton from './Button';
+
 import styled from 'styled-components';
 
-const PostsForm = () => {
+const PostsForm = (size) => {
   
+
   const dispatch = useDispatch();
 
   // ::: 폼 입력값 관리
@@ -64,7 +67,8 @@ const PostsForm = () => {
           onChange={onChangeInputs} 
         />
 
-        <button>ADD</button>
+          <AllButton className='buttonAdd' contents='Add' size='sm'></AllButton>
+
     </StPostsFromWrap>
   ) 
 }
@@ -75,6 +79,9 @@ const StPostsFromWrap = styled.form`
   text-align: center;
   label {
     color: var(--line-color);
+  }
+  .buttonAdd {
+    display : flex;
   }
 `
 
