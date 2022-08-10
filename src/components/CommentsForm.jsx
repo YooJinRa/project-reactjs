@@ -8,7 +8,7 @@ import { addComment } from '../modules/Commons';
 
 
 const CommentsForm = () => {
-  // ::: 폼 입력값 관리
+  // ::: 폼 입력값 관리!
   const id = Math.floor(Math.random()*1000 +1);
 
   const dispatch = useDispatch();
@@ -28,14 +28,15 @@ const CommentsForm = () => {
       ...inputs,
       [name] : value
     });
+    
   }
-
+  console.log(inputs.writer.length)
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (writer === "" || message === "")
     return alert ("내용을 입력하세요.");
 
-    dispatch(addComment({...inputs, id, writer, message}))
+    dispatch(addComment({id, writer, message}))
   
     setInputs({
 

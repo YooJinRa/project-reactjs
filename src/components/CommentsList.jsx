@@ -20,8 +20,9 @@ const CommentsList = () => {
   return (
     <StCommentsListWrap>
       {commentsList.map((card) => (
+        
         <CommentCards key={card.id} card={card}/>
-        )
+      )
   )
 }
     </StCommentsListWrap>

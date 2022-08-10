@@ -49,6 +49,14 @@ export const deleteContent = createAsyncThunk("DELETE_CONTENT", async (id) => {
   return id;
 });
 
+export const deleteComment = createAsyncThunk("DELETE_COMMENT", async (id) => {
+  // eslint-disable-next-line
+  const response = await axios.delete(`http://localhost:${port}/comments/${id}`)
+  
+  return id;
+});
+
+
 // ::: [Thunk, Axios] 데이터 수정하기(put)
 export const updateContent = createAsyncThunk("UPDATE_Content", 
   async() => {
@@ -74,6 +82,9 @@ export const commonsReducer = createSlice({
     [addContent.fulfilled]: (state, { payload }) => [...state, payload],
     [addComment.fulfilled]: (state, { payload }) => [...state, payload],
     [deleteContent.fulfilled]: (state, { payload }) => { },
+    [deleteComment.fulfilled]: (state, { payload }) => 
+        state.filter((comment)  => comment.id !== payload),
+
     [updateContent.fulfilled]: (state, {payload}) => { }
   },
 });
