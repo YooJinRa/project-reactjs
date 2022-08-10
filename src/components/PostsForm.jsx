@@ -1,5 +1,5 @@
 // components/Add.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // ::: 리덕스로 보내기 위해 dispatch 연결, 미들웨어 연결
 import { useDispatch } from "react-redux";

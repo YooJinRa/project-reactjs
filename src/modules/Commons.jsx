@@ -14,14 +14,33 @@ export const getContents = createAsyncThunk("GET_CONTENTS", async () => {
   return response.data;
 });
 
+export const getComments = createAsyncThunk("GET_COMMENTS", async () => {
+  const response = await axios.get(`http://localhost:${port}/comments`);
+  return response.data;
+});
+
 // ::: [Thunk, Axios] 데이터 추가하기(post)
 export const addContent = createAsyncThunk("ADD_CONTENT", async (newContents) => {
   const respose = await axios.post(`http://localhost:${port}/posts`, {
     title: newContents.title,
     text: newContents.text,
+    id : newContents.id,
   });
+  console.log(respose.data);
   return respose.data;
 });
+
+export const addComment = createAsyncThunk("ADD_COMMENT", async (newComments) => {
+  const respose = await axios.post(`http://localhost:${port}/comments`, {
+    message: newComments.message,
+    writer: newComments.writer,
+    id : newComments.id,
+    postId : newComments.postId,
+  });
+  console.log(respose.data);
+  return respose.data;
+});
+
 
 // ::: [Thunk, Axios] 데이터 삭제하기(delete)
 export const deleteContent = createAsyncThunk("DELETE_CONTENT", async (id) => {
@@ -51,7 +70,9 @@ export const commonsReducer = createSlice({
   reducers: { },
   extraReducers: {
     [getContents.fulfilled]: (state, { payload }) => [...payload],
+    [getComments.fulfilled]: (state, { payload }) => [...payload],
     [addContent.fulfilled]: (state, { payload }) => [...state, payload],
+    [addComment.fulfilled]: (state, { payload }) => [...state, payload],
     [deleteContent.fulfilled]: (state, { payload }) => { },
     [updateContent.fulfilled]: (state, {payload}) => { }
   },
