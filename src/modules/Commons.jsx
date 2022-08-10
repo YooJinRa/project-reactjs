@@ -16,11 +16,11 @@ export const getContents = createAsyncThunk("GET_CONTENTS", async () => {
 
 // ::: [Thunk, Axios] 데이터 추가하기(post)
 export const addContent = createAsyncThunk("ADD_CONTENT", async (newContents) => {
-  const respose = await axios.post(`http://localhost:${port}/posts`, {
+  const response = await axios.post(`http://localhost:${port}/posts`, {
     title: newContents.title,
     text: newContents.text,
   });
-  return respose.data;
+  return response.data;
 });
 
 // ::: [Thunk, Axios] 데이터 삭제하기(delete)

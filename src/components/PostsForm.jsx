@@ -43,8 +43,11 @@ const PostsForm = () => {
     }
   }
 
+  //
+
   return (
     <StPostsFromWrap action='' onSubmit={onCreatePost}>
+
         <label>TITLE</label>
         <input 
           type='text' 
@@ -74,3 +77,6 @@ const StPostsFromWrap = styled.form`
     color: var(--line-color);
   }
 `
+
+
+//
