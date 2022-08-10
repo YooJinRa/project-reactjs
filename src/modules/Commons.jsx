@@ -9,37 +9,38 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const port = '3003';
 
 // ::: [Thunk, Axios] 데이터 받아오기(get)
-export const getContents = createAsyncThunk("GET_CONTENTS", async () => {
-  const response = await axios.get(`http://localhost:${port}/posts`);
+export const __getContents = createAsyncThunk("GET_CONTENTS", async () => {
+  const response = await axios.get(`http://localhost:${port}/posts/`);
   return response.data;
 });
 
 // ::: [Thunk, Axios] 데이터 추가하기(post)
-export const addContent = createAsyncThunk("ADD_CONTENT", async (newContents) => {
-  const respose = await axios.post(`http://localhost:${port}/posts`, {
+export const __addContent = createAsyncThunk("ADD_CONTENT", async (newContents) => {
+  const response = await axios.post(`http://localhost:${port}/posts`, {
     title: newContents.title,
     text: newContents.text,
   });
-  return respose.data;
+  return response.data;
 });
 
 // ::: [Thunk, Axios] 데이터 삭제하기(delete)
-export const deleteContent = createAsyncThunk("DELETE_CONTENT", async (id) => {
+export const __deleteContent = createAsyncThunk("DELETE_CONTENT", async ({ id }) => {
   // eslint-disable-next-line
   const response = await axios.delete(`http://localhost:${port}/posts/${id}`);
   return id;
 });
 
 // ::: [Thunk, Axios] 데이터 수정하기(put)
-export const updateContent = createAsyncThunk("UPDATE_Content", 
-  async() => {
+export const __updateContent = createAsyncThunk("UPDATE_Content", 
+  async(updateContent) => {
     // eslint-disable-next-line 
-    const response = await axios.put(`http://localhost:${port}/posts/${id}`, {
-      // 수정할 부분
+    const response = await axios.put(`http://localhost:${port}/posts/${updateContent.id}`, {
+      // retrun할 데이터 입력
+      id: updateContent.id,
+      title: updateContent.title,
+      text: updateContent.text
     });
-    return {
-      // reducer로 보낼 부분
-    };
+    return response.data;
   }
 );
 
@@ -49,12 +50,25 @@ export const commonsReducer = createSlice({
   name: 'commons',
   initialState: [ ],
   reducers: { },
-  extraReducers: {
-    [getContents.fulfilled]: (state, { payload }) => [...payload],
-    [addContent.fulfilled]: (state, { payload }) => [...state, payload],
-    [deleteContent.fulfilled]: (state, { payload }) => { },
-    [updateContent.fulfilled]: (state, {payload}) => { }
+  extraReducers: { 
+    [__getContents.fulfilled]: (state, { payload }) => [...payload],
+
+    [__addContent.fulfilled]: (state, { payload }) => [...state, payload],
+
+    [__deleteContent.fulfilled]: (state, { payload }) => 
+    state.filter((part) => part.id !== payload),
+
+    [__updateContent.fulfilled]: (state, {payload}) => {
+      return state.map((post) => {
+        if(post.id === payload.id) {
+          return { ...post, title: payload.title, text: payload.text };
+        } else {
+          return post;
+        }
+      });
+    }
   },
 });
+
 
 export default commonsReducer.reducer

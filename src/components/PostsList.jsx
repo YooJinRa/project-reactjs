@@ -1,7 +1,7 @@
 // components/List.jsx
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContents } from '../modules/Commons';
+import { __getContents } from '../modules/Commons';
 import PostCard from './PostCard';
 import styled from 'styled-components';
 
@@ -10,7 +10,7 @@ const PostsList = () => {
   const postsList = useSelector((state) => state.commonsReducer );
 
   useEffect(() => {
-    dispatch(getContents());
+    dispatch(__getContents());
   }, [dispatch]);
 
   return (
@@ -26,7 +26,12 @@ export default PostsList;
 
 const StPostsListWrap = styled.div`
   width:100%;
-  background-color: var(--sub-color);
-
+  display: grid;
+  grid-template-rows: masonry;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  column-gap: 10px;
+  counter-reset: grid;
+  padding: 30px 0;
 `
 

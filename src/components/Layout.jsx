@@ -17,5 +17,4 @@ const StLayoutWrap = styled.div`
   min-width: 1200px;
   margin: 0 auto;
   padding-top: 100px;
-  background-color: var(--sub-color);
 `
