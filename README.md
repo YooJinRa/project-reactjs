@@ -1,7 +1,7 @@
 # Introduction Project
 - 만든 사람들 : 나유진, 김혜진, 구장우 | 항해99 8기 주특기 숙련주차 1조
 - 주 사용 기술 : ReactJS, Json-Server, Json DB, Redux-Toolkit, Redux-Thunk, Axios, Styled-Components
-- 구현 기능 : 게시글 CRUD, 댓글 CRUD, Masonry Layout, Validation
+- 구현 기능 : 게시글 CRUD, 댓글 CRUD, Masonry Layout, Validation, Vercel
 
 ## Guide Project
 ### Project start
