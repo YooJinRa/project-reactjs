@@ -9,12 +9,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const port = '3003';
 
 // ::: [Thunk, Axios] 데이터 받아오기(get)
+// ::: (get) 게시글
 export const __getContents = createAsyncThunk("GET_CONTENTS", async () => {
   const response = await axios.get(`http://localhost:${port}/posts/`);
   return response.data;
 });
 
 // ::: [Thunk, Axios] 데이터 추가하기(post)
+// :::: (post) 게시글
 export const __addContent = createAsyncThunk("ADD_CONTENT", async (newContents) => {
   const response = await axios.post(`http://localhost:${port}/posts`, {
     title: newContents.title,
@@ -23,7 +25,9 @@ export const __addContent = createAsyncThunk("ADD_CONTENT", async (newContents) 
   return response.data;
 });
 
+
 // ::: [Thunk, Axios] 데이터 삭제하기(delete)
+// :::: (delete) 게시글
 export const __deleteContent = createAsyncThunk("DELETE_CONTENT", async ({ id }) => {
   // eslint-disable-next-line
   const response = await axios.delete(`http://localhost:${port}/posts/${id}`);
@@ -31,11 +35,11 @@ export const __deleteContent = createAsyncThunk("DELETE_CONTENT", async ({ id })
 });
 
 // ::: [Thunk, Axios] 데이터 수정하기(put)
-export const __updateContent = createAsyncThunk("UPDATE_Content", 
+// :::: (put) 게시글
+export const __updateContent = createAsyncThunk("UPDATE_CONTENT", 
   async(updateContent) => {
     // eslint-disable-next-line 
     const response = await axios.put(`http://localhost:${port}/posts/${updateContent.id}`, {
-      // retrun할 데이터 입력
       id: updateContent.id,
       title: updateContent.title,
       text: updateContent.text
@@ -44,6 +48,7 @@ export const __updateContent = createAsyncThunk("UPDATE_Content",
   }
 );
 
+
 // [Reducer]
 // ::: 스토어 공간에서 어떤 작업을 진행해줄지
 export const commonsReducer = createSlice({
@@ -51,13 +56,12 @@ export const commonsReducer = createSlice({
   initialState: [ ],
   reducers: { },
   extraReducers: { 
+
+    // 게시글
     [__getContents.fulfilled]: (state, { payload }) => [...payload],
-
     [__addContent.fulfilled]: (state, { payload }) => [...state, payload],
-
     [__deleteContent.fulfilled]: (state, { payload }) => 
-    state.filter((part) => part.id !== payload),
-
+      state.filter((part) => part.id !== payload),
     [__updateContent.fulfilled]: (state, {payload}) => {
       return state.map((post) => {
         if(post.id === payload.id) {
@@ -67,6 +71,7 @@ export const commonsReducer = createSlice({
         }
       });
     }
+
   },
 });
 

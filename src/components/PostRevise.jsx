@@ -77,8 +77,5 @@ export default PostRivese;
 
 const StPostRiveseWrap = styled.div`
   padding: 30px;
-  .validationTextBox {
-    color: #F05050;
-  }
 `
 

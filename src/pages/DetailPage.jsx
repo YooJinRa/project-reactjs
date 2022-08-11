@@ -8,7 +8,6 @@ import { __getContents } from '../modules/Commons';
 import Header from '../components/Header';
 import Layout from '../components/Layout';
 import PostDetail from '../components/PostDetail';
-import CommentsForm from '../components/CommentsForm';
 import CommentsList from '../components/CommentsList';
 
 
@@ -29,8 +28,6 @@ const PostsPage = () => {
         post.id === Number(postId.postId) &&
         <PostDetail key={post.id} post={post} />
       ))}
-
-      <CommentsForm />
       <CommentsList />
     </Layout>
   );

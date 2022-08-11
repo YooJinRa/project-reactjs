@@ -4,7 +4,6 @@ import React, { useState, useRef } from 'react';
 // ::: 리덕스로 보내기 위해 dispatch 연결, 미들웨어 연결
 import { useDispatch } from "react-redux";
 import { __addContent } from '../modules/Commons';
-
 import styled from 'styled-components';
 
 const PostsForm = () => {
@@ -72,9 +71,5 @@ const StPostsFromWrap = styled.form`
   text-align: center;
   label {
     color: var(--line-color);
-  }
-  .validationTextBox {
-    padding: 10px;
-    color: #F05050;
   }
 `
