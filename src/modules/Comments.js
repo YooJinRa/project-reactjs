@@ -6,12 +6,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // ::: Thunk 생성 및 설정, Axios를 사용해 데이터 주고 받기 위해 설정
 // ::: json server 포트 설정
-const port = '3003';
+const URI = {
+  BASE: process.env.REACT_APP_BASE_URI2,
+  };
 
 // ::: [Thunk, Axios] 데이터 받아오기(get)
 // :::: (get) 댓글
 export const __getComments = createAsyncThunk("GET_COMMENTS", async () => {
-  const response = await axios.get(`http://localhost:${port}/comments/`);
+  const response = await axios.get(`${URI.BASE}`);
   return response.data;
 });
 
@@ -19,7 +21,7 @@ export const __getComments = createAsyncThunk("GET_COMMENTS", async () => {
 // ::: [Thunk, Axios] 데이터 추가하기(post)
 // :::: (post) 댓글
 export const __addComment = createAsyncThunk("ADD_COMMENT", async (newComments) => {
-  const respose = await axios.post(`http://localhost:${port}/comments`, {
+  const respose = await axios.post(`${URI.BASE}`, {
     message: newComments.message,
     writer: newComments.writer,
     id : newComments.id,
@@ -33,7 +35,7 @@ export const __addComment = createAsyncThunk("ADD_COMMENT", async (newComments) 
 // :::: (delete) 댓글
 export const __deleteComment = createAsyncThunk("DELETE_COMMENT", async (id) => {
   // eslint-disable-next-line
-  const response = await axios.delete(`http://localhost:${port}/comments/${id}`)
+  const response = await axios.delete(`${URI.BASE}/${id}`)
   return id;
 });
 
@@ -43,7 +45,7 @@ export const __deleteComment = createAsyncThunk("DELETE_COMMENT", async (id) => 
 export const __updateComment = createAsyncThunk("UPDATE_COMMENT", 
   async(updateComment) => {
     // eslint-disable-next-line
-    const response = await axios.put(`http://localhost:${port}/comments/${updateComment.id}`, {
+    const response = await axios.put(`${URI.BASE}/${updateComment.id}`, {
       writer: updateComment.writer,
       message: updateComment.message,
       postId: updateComment.postId,
