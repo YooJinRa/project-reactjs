@@ -59,6 +59,10 @@ const GlobalStyle = createGlobalStyle`
   input:focus {
     outline: none;
   }
+  .validationTextBox {
+    color: #F05050;
+    padding: 10px;
+  }
 `
 
 export default GlobalStyle;
