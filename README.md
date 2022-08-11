@@ -1,7 +1,11 @@
 # Introduction Project
+- [배포 사이트 바로가기 ===>](https://project-reactjs-theta.vercel.app/)
 - 만든 사람들 : 나유진, 김혜진, 구장우 | 항해99 8기 주특기 숙련주차 1조
 - 주 사용 기술 : ReactJS, Json-Server, Json DB, Redux-Toolkit, Redux-Thunk, Axios, Styled-Components
 - 구현 기능 : 게시글 CRUD, 댓글 CRUD, Masonry Layout, Validation, Vercel
+- 미리보기
+<img src="https://github.com/YooJinRa/project-reactjs/blob/main/projectComplete1.png" alt="complete" width="800px">
+<img src="https://github.com/YooJinRa/project-reactjs/blob/main/projectComplete2.png" alt="complete" width="800px">
 
 ## Guide Project
 ### Project start
